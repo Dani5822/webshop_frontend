@@ -21,6 +21,7 @@ const Navbar = () => {
           <span>Welcome, {user} </span>
           <Link to="/products" style={{ marginRight: '10px' }}>Products</Link>
           <Link to="/cart" style={{ marginRight: '10px' }}>Cart</Link>
+          <Link to="/profile">Profile</Link>
           <button onClick={handleLogout}>Logout</button>
         </>
       ) : (

@@ -1,40 +1,57 @@
 import React, { useState } from "react";
 import { register } from "../api";
 import { useNavigate } from "react-router-dom";
+import "../components/Register.css";
 
-const Register = () => {
+const Register: React.FC = () => {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await register(username, password);
-      alert("Registration successful! Please log in.");
+      await register(username, email, password);
+      alert("Registration successful!");
       navigate("/");
     } catch (err) {
-      alert("Registration failed");
+      console.error(err);
+      setError("Registration failed. Please try again.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Register</button>
-    </form>
+    <div className="register-container">
+      <h1>Register</h1>
+      {error && <p className="error">{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <label>Username:</label>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <label>Email:</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <label>Password:</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Register</button>
+      </form>
+      <a href="/">Already have an account? Login here</a>
+    </div>
   );
 };
 

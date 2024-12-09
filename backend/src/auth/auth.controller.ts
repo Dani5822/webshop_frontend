@@ -5,6 +5,8 @@ import {
     Session,
     HttpException,
     HttpStatus,
+    Req,
+    Get,
   } from '@nestjs/common';
   import { AuthService } from './auth.service';
   
@@ -16,9 +18,10 @@ import {
     async register(
       @Body('username') username: string,
       @Body('password') password: string,
+      @Body('email') email: string,
     ) {
       try {
-        return await this.authService.register(username, password);
+        return await this.authService.register(username, password,email);
       } catch (e) {
         throw new HttpException('Username already exists', HttpStatus.BAD_REQUEST);
       }
@@ -27,7 +30,7 @@ import {
     @Post('login')
     async login(
       @Body('username') username: string,
-      @Body('password') password: string,
+      @Body('password') password: string,    
       @Session() session: Record<string, any>,
     ) {
       const user = await this.authService.validateUser(username, password);
@@ -47,5 +50,12 @@ import {
       });
       return { message: 'Logout successful' };
     }
+
+    @Get('profile/:username')
+    async getProfile(@Req() req: any) { {
+    const username = req.params.username;
+    const user =await this.authService.getProfile(username);
+    return user;
   }
-  
+}
+  }

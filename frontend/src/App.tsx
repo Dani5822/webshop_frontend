@@ -6,6 +6,7 @@ import CartPage from './pages/CartPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import { Product } from './models/Product';
+import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
 import { fetchProducts } from './api';
 
@@ -13,7 +14,7 @@ const App: React.FC = () => {
   const [cart, setCart] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const limit = 6;
+  const limit = 10;
   const [products, setProducts] = useState<Product[]>([]);
 
   const loadProducts = async (page: number) => {
@@ -64,6 +65,9 @@ const App: React.FC = () => {
               </ProtectedRoute>
             }
           />
+
+          <Route path="/profile" 
+              element={<ProtectedRoute><Profile  /></ProtectedRoute>} />
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>

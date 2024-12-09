@@ -1,0 +1,87 @@
+/* Alap stílusok */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin-top: 25px;
+    padding: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Regisztrációs konténer */
+  .register-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+  
+  /* Fejléc */
+  .register-container h1 {
+    font-size: 24px;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #333333;
+  }
+  
+  /* Label és input mezők */
+  .register-container label {
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: #555555;
+  }
+  
+  .register-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  
+  /* Hibák */
+  .register-container .error {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Gomb */
+  .register-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #ffffff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .register-container button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Linkek */
+  .register-container a {
+    display: block;
+    margin-top: 1rem;
+    font-size: 14px;
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .register-container a:hover {
+    text-decoration: underline;
+  }
+  
