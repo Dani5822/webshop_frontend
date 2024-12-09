@@ -21,6 +21,7 @@ const Cart: React.FC<CartProps> = ({ cart, onRemoveFromCart }) => {
               <span>
                 {product.name} - ${product.price.toFixed(2)}
               </span>
+              
               <button onClick={() => onRemoveFromCart(product)} style={{ marginLeft: '10px', background: 'red' }}>
                 Remove
               </button>

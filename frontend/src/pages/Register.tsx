@@ -1,55 +1,40 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { register } from '../components/authService';
+import React, { useState } from "react";
+import { register } from "../api";
+import { useNavigate } from "react-router-dom";
 
-const Register: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
+const Register = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleRegister = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
-    setSuccess(false);
-
     try {
       await register(username, password);
-      setSuccess(true);
-      setTimeout(() => navigate('/login'), 2000); // Sikeres regisztráció után átirányítunk a login oldalra
+      alert("Registration successful! Please log in.");
+      navigate("/");
     } catch (err) {
-      setError('Registration failed: Username or password is invalid');
+      alert("Registration failed");
     }
   };
 
   return (
-    <div style={{ maxWidth: '300px', margin: 'auto', padding: '20px', textAlign: 'center' }}>
+    <form onSubmit={handleSubmit}>
       <h2>Register</h2>
-      <form onSubmit={handleRegister}>
-        <div>
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            style={{ marginBottom: '10px', width: '100%', padding: '8px' }}
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password (min 6 characters)"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{ marginBottom: '10px', width: '100%', padding: '8px' }}
-          />
-        </div>
-        <button type="submit" style={{ width: '100%', padding: '10px' }}>Register</button>
-      </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {success && <p style={{ color: 'green' }}>Registration successful! Redirecting...</p>}
-    </div>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button type="submit">Register</button>
+    </form>
   );
 };
 

@@ -34,7 +34,7 @@ import {
       if (!user) {
         throw new HttpException('Invalid credentials', HttpStatus.UNAUTHORIZED);
       }
-      session.userId = user.id;
+      session.userId = user.id; // Ensure this line is setting the userId correctly
       return { message: 'Login successful' };
     }
   

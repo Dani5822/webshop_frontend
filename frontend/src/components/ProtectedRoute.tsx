@@ -1,15 +1,14 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
-import { isLoggedIn } from '../components/authService';
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { useUser } from "./UserContext";
 
-interface ProtectedRouteProps {
-  children: JSX.Element;
-}
+const ProtectedRoute: React.FC<{ children: JSX.Element }> = ({ children }) => {
+  const { user } = useUser();
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  if (!isLoggedIn()) {
-    return <Navigate to="/login" replace />;
+  if (!user) {
+    return <Navigate to="/" replace />;
   }
+
   return children;
 };
 

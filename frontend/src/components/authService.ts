@@ -3,7 +3,6 @@ const SESSION_KEY = 'user-session';
 export const login = async (username: string, password: string): Promise<void> => {
   // Simulált API hívás (később helyettesíthető valódi backend endpointtal)
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
       if (username === 'user' && password === 'password') {
         // Token mentése a session-be
         sessionStorage.setItem(SESSION_KEY, JSON.stringify({ username }));
@@ -11,7 +10,6 @@ export const login = async (username: string, password: string): Promise<void> =
       } else {
         reject(new Error('Invalid credentials'));
       }
-    }, 1000);
   });
 };
 
