@@ -26,12 +26,6 @@ const App: React.FC = () => {
     }
   };
 
-  const handlePageChange = (newPage: number) => {
-    if (newPage > 0 && newPage <= totalPages) {
-      setCurrentPage(newPage);
-    }
-  };
-
   useEffect(() => {
     loadProducts(currentPage);
   }, [currentPage]);
@@ -41,7 +35,12 @@ const App: React.FC = () => {
   };
 
   const handleRemoveFromCart = (product: Product) => {
-    setCart(cart.filter(item => item.id !== product.id));
+    let index = cart.indexOf(product, 0);
+    cart.splice(index,1);
+    setCart([...cart]);
+    if(cart.length === 0){
+      setCart([]);
+    }
   };
 
   return (
