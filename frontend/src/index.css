@@ -1,0 +1,19 @@
+nav {
+    background-color: #f8f9fa;
+    padding: 10px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #007bff;
+    margin-right: 15px;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
