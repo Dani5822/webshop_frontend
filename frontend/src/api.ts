@@ -36,3 +36,17 @@ export const logout = async () => {
   }
   return response.json();
 };
+
+export const fetchProducts = async (page: number, limit: number) => {
+  const response = await fetch(`http://localhost:3000/products`, {
+    method: "Post",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ page, limit }),
+    credentials: "include",
+  });
+  if (!response.ok) {
+    throw new Error("Failed to fetch products");
+  }
+  return response.json();
+};
+

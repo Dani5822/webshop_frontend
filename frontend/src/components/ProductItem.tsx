@@ -8,12 +8,12 @@ interface ProductItemProps {
 
 const ProductItem: React.FC<ProductItemProps> = ({ product, onAddToCart }) => {
   return (
-    <div style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
-      <h3>{product.name}</h3>
-      <p>{product.description}</p>
-      <p><strong>${product.price.toFixed(2)}</strong></p>
-      <button onClick={() => onAddToCart(product)}>Add to Cart</button>
-    </div>
+    <div key={product.id} style={{ border: "1px solid #ddd", padding: "16px", textAlign: "center" }}>
+    <img src={product.image} alt={product.name} style={{ width: "100%", height: "150px", objectFit: "cover" }} />
+    <h3>{product.name}</h3>
+    <p>${product.price.toFixed(2)}</p>
+    <button onClick={() => onAddToCart(product)}>Add to Cart</button>
+  </div>
   );
 };
 
